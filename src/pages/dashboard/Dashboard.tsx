@@ -30,7 +30,7 @@ const Dashboard = () => {
       {/* Chart */}
       <div className="card">
         <h2 className="text-lg font-semibold mb-4">Weight Progress</h2>
-        <WeightChart />
+        <WeightChart data={weights} />
       </div>
     </div>
   );
