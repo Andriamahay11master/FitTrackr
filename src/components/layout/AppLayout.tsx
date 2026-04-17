@@ -1,4 +1,4 @@
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
