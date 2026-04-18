@@ -3,6 +3,7 @@ import ProgressCard from "../../components/ui/ProgressCard";
 import WeightChart from "../../components/charts/WeightChart";
 import { useWeight } from "../../hooks/useWeight";
 import AddWeightForm from "../../components/ui/AddWeightForm";
+import GoalForm from "../../components/ui/GoalForm";
 
 const Dashboard = () => {
   const { weights, addWeight, updateGoal, goal } = useWeight();
@@ -25,12 +26,13 @@ const Dashboard = () => {
 
       {/* Add Weight */}
       <AddWeightForm onAdd={addWeight} />
+      <GoalForm onSetGoal={updateGoal} currentGoal={goal} />
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <WeightCard title="Current Weight" value={latestWeight + " kg"} />
         <ProgressCard progress={progress} />
-        <WeightCard title="Goal Weight" value={goal + "kg"} />
+        <WeightCard title="Goal Weight" value={goal + " kg"} />
       </div>
 
       {/* Chart */}
