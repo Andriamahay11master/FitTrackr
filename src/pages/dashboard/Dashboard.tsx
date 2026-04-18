@@ -5,10 +5,16 @@ import { useWeight } from "../../hooks/useWeight";
 import AddWeightForm from "../../components/ui/AddWeightForm";
 
 const Dashboard = () => {
-  const { weights, addWeight } = useWeight();
+  const { weights, addWeight, updateGoal, goal } = useWeight();
 
   const latestWeight =
-    weights.length > 0 ? weights[weights.length - 1].value : "--";
+    weights.length > 0 ? weights[weights.length - 1].value : null;
+
+  const progress =
+    latestWeight && goal
+      ? Math.round(((latestWeight - goal) / latestWeight) * 100)
+      : 0;
+
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
@@ -23,8 +29,8 @@ const Dashboard = () => {
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <WeightCard title="Current Weight" value={latestWeight + " kg"} />
-        <ProgressCard />
-        <WeightCard title="Goal Weight" value="85 kg" />
+        <ProgressCard progress={progress} />
+        <WeightCard title="Goal Weight" value={goal + "kg"} />
       </div>
 
       {/* Chart */}

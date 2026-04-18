@@ -1,6 +1,8 @@
-const ProgressCard = () => {
-  const progress = 60; // example %
+interface ProgressCardProps {
+  progress: number;
+}
 
+const ProgressCard = ({ progress }: ProgressCardProps) => {
   return (
     <div className="card">
       <h3 className="text-gray-500">Progress</h3>
