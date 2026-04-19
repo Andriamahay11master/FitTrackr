@@ -44,11 +44,19 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1">
         <ProgressCard progress={progress} />
+        <p className="text-sm text-gray-600 mt-2">
+          {remaining > 0
+            ? `You have ${remaining} kg left to reach your goal`
+            : "Goal reached 🎉"}
+        </p>
       </div>
 
       {/* Chart */}
-      <div className="card">
-        <h2 className="text-lg font-semibold mb-4">Weight Progress</h2>
+      <div className="card space-y-4">
+        <div className="flex justify-between items-center">
+          <h2 className="font-semibold">Weight Progress</h2>
+          <span className="text-sm text-gray-500">Last entries</span>
+        </div>
         <WeightChart data={weights} />
       </div>
     </div>
