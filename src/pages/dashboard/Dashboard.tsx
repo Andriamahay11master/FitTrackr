@@ -26,8 +26,8 @@ const Dashboard = () => {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-        <p className="text-gray-500">Track your progress</p>
+        <h1 className="text-3xl font-bold">Welcome back 👋</h1>
+        <p className="text-gray-500">You’re making progress — keep going.</p>
       </div>
 
       {/* Add Weight */}
