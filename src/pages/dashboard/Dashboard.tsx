@@ -5,6 +5,8 @@ import { useWeight } from "../../hooks/useWeight";
 import AddWeightForm from "../../components/ui/AddWeightForm";
 import GoalForm from "../../components/ui/GoalForm";
 import { calculateProgress, calculateRemaining } from "../../utils/weightUtils";
+import { useInsights } from "../../hooks/useInsights";
+import InsightsCard from "../../components/ui/InsightsCard";
 
 const Dashboard = () => {
   const { weights, addWeight, updateGoal, goal } = useWeight();
@@ -22,6 +24,7 @@ const Dashboard = () => {
   const remaining =
     latestWeight && goal ? calculateRemaining(latestWeight, goal) : 0;
 
+  const insights = useInsights(weights, goal ?? 0);
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
@@ -58,6 +61,10 @@ const Dashboard = () => {
           <span className="text-sm text-gray-500">Last entries</span>
         </div>
         <WeightChart data={weights} />
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <InsightsCard insights={insights} />
       </div>
     </div>
   );
