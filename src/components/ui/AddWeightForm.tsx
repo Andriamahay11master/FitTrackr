@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { saveWeight } from "../../services/weightService";
 
 const AddWeightForm = ({ onAdd }: { onAdd: (weight: number) => void }) => {
   const [weight, setWeight] = useState("");
@@ -8,6 +9,8 @@ const AddWeightForm = ({ onAdd }: { onAdd: (weight: number) => void }) => {
 
     if (!weight) return;
 
+    //save to firebase
+    saveWeight(Number(weight));
     onAdd(Number(weight));
     setWeight("");
   };
