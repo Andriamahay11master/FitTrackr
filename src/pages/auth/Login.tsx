@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { login } from "../../services/authService";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -12,6 +14,7 @@ const Login = () => {
     try {
       await login(email, password);
       alert("Logged in!");
+      navigate("/");
     } catch (err) {
       console.error(err);
       alert("Error logging in");
