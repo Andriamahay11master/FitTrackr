@@ -3,6 +3,7 @@ import { auth } from "../../services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import type { User } from "firebase/auth";
 import { Navigate } from "react-router-dom";
+import FullPageLoader from "../ui/FullPageLoader";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -17,7 +18,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     return () => unsub();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <FullPageLoader />;
 
   return user ? children : <Navigate to="/login" />;
 };
