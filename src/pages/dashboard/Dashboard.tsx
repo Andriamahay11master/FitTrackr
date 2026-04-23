@@ -7,14 +7,31 @@ import GoalForm from "../../components/ui/GoalForm";
 import { calculateProgress, calculateRemaining } from "../../utils/weightUtils";
 import { useInsights } from "../../hooks/useInsights";
 import InsightsCard from "../../components/ui/InsightsCard";
+import { getWeights } from "../../services/weightService";
+import { useEffect, useState } from "react";
 
+interface WeightEntry {
+  date: string;
+  value: number;
+}
 const Dashboard = () => {
   const { weights, addWeight, updateGoal, goal } = useWeight();
 
-  const latestWeight =
-    weights.length > 0 ? weights[weights.length - 1].value : null;
+  const [dataWeights, setDataWeights] = useState<WeightEntry[]>([]);
+  // Get weight from firebase and calculate insights
+  useEffect(() => {
+    const fetchWeights = async () => {
+      const weights = await getWeights();
+      setDataWeights(weights as WeightEntry[]);
+      // Update weights state (assuming you have a way to update the weights state)
+    };
+    fetchWeights();
+  }, [dataWeights]);
 
-  const startWeight = weights.length > 0 ? weights[0].value : null;
+  const latestWeight =
+    dataWeights.length > 0 ? dataWeights[dataWeights.length - 1].value : null;
+
+  const startWeight = dataWeights.length > 0 ? dataWeights[0].value : null;
 
   const progress =
     latestWeight && goal && startWeight
@@ -24,7 +41,7 @@ const Dashboard = () => {
   const remaining =
     latestWeight && goal ? calculateRemaining(latestWeight, goal) : 0;
 
-  const insights = useInsights(weights, goal ?? 0);
+  const insights = useInsights(dataWeights, goal ?? 0);
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
@@ -60,7 +77,7 @@ const Dashboard = () => {
           <h2 className="font-semibold">Weight Progress</h2>
           <span className="text-sm text-gray-500">Last entries</span>
         </div>
-        <WeightChart data={weights} />
+        <WeightChart data={dataWeights} />
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
