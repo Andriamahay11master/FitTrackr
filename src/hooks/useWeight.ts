@@ -25,7 +25,7 @@ export const useWeight = () => {
           getWeights(),
           getGoal(),
         ]);
-        setWeights(weightsData);
+        setWeights(weightsData as WeightEntry[]);
         setGoal(goalData);
       } catch (error) {
         console.error("Error loading weight data from Firestore:", error);
@@ -42,7 +42,7 @@ export const useWeight = () => {
       await saveWeight(value);
       // Refetch weights after adding
       const updatedWeights = await getWeights();
-      setWeights(updatedWeights);
+      setWeights(updatedWeights as WeightEntry[]);
     } catch (error) {
       console.error("Error adding weight:", error);
     }
