@@ -1,8 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* Custom reusable classes */
+
 .card {
   @apply bg-white rounded-2xl shadow-md p-5;
 }
+
+@import "./sidebar";
