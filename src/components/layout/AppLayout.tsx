@@ -1,9 +1,9 @@
 import { logout } from "../../services/authService";
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex min-h-screen bg-gray-100 relative">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="fixed top-0 left-0 h-full w-64 bg-white shadow-md p-5 z-20">
+      <aside className="fixed top-0 left-0 h-full w-25 bg-white shadow-md p-4 z-20 lg:w-64 lg:p-5">
         <h2 className="text-xl font-bold mb-6">FitTrack</h2>
 
         <nav className="space-y-3">
@@ -19,9 +19,9 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
         </nav>
       </aside>
 
-      <div className="flex flex-col flex-1 ml-64 mt-12">
+      <div className="flex flex-col flex-1 ml-24 mt-12 lg:ml-64">
         {/* Top bar */}
-        <div className="fixed inset-x-0 top-0 flex justify-end items-center p-4 bg-white border-b shadow-sm z-10">
+        <div className="fixed w-screen top-0 flex justify-end items-center p-3 bg-white border-b shadow-sm z-10 lg:p-4 lg:inset-x-0 lg:w-auto">
           <button
             onClick={logout}
             className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
