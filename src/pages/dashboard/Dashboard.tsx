@@ -7,6 +7,7 @@ import GoalForm from "../../components/ui/GoalForm";
 import { calculateProgress, calculateRemaining } from "../../utils/weightUtils";
 import { useInsights } from "../../hooks/useInsights";
 import InsightsCard from "../../components/ui/InsightsCard";
+import Loader from "../../components/ui/Loader";
 
 const Dashboard = () => {
   const { weights, addWeight, updateGoal, goal, loading } = useWeight();
@@ -34,8 +35,8 @@ const Dashboard = () => {
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center py-12">
-          <p className="text-gray-500">Loading your data...</p>
+        <div className="flex justify-center items-center py-12 h-64">
+          <Loader size="lg" />
         </div>
       ) : (
         <>
