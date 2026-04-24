@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+# FitTrackr
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FitTrackr is a modern fitness tracking web app built with React, TypeScript, and Vite. It helps users track weight progress, set goals, log meals, and manage personalized settings in a clean dashboard experience backed by Firebase.
 
-Currently, two official plugins are available:
+## Project setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Install dependencies:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start the dev server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Dependencies
+
+These packages are required at runtime:
+
+- `firebase` — Firebase SDK for authentication and data storage
+- `react` — React UI library
+- `react-dom` — React DOM renderer
+- `react-router-dom` — Client-side routing
+- `recharts` — Charting library for data visualizations
+- `sass` — Sass compiler for styling
+
+## Dev dependencies
+
+These packages are used for development, linting, type checking, and build tooling:
+
+- `@eslint/js` — ESLint JavaScript support
+- `@types/node` — Node.js type definitions
+- `@types/react` — React type definitions
+- `@types/react-dom` — React DOM type definitions
+- `@vitejs/plugin-react` — Vite plugin for React
+- `autoprefixer` — PostCSS plugin to parse CSS and add vendor prefixes
+- `eslint` — JavaScript and TypeScript linter
+- `eslint-plugin-react-hooks` — ESLint rules for React hooks
+- `eslint-plugin-react-refresh` — ESLint integration for React Fast Refresh
+- `globals` — Global variable definitions for ESLint
+- `postcss` — CSS processing tool
+- `tailwindcss` — Utility-first CSS framework
+- `typescript` — TypeScript language support
+- `typescript-eslint` — ESLint parser and plugin for TypeScript
+- `vite` — Frontend build and dev server
+
+## Project structure
+
+Key folders:
+
+- `src/` — Application source code
+  - `components/` — UI components, charts, routes, and skeletons
+  - `features/` — Feature-specific modules for goals, meals, and weight
+  - `hooks/` — Custom React hooks
+  - `pages/` — Route pages for auth, dashboard, meals, settings, and weight
+  - `services/` — Firebase, auth, storage, and weight services
+  - `store/` — Zustand store hooks
+  - `utils/` — Utility helpers for dates, insights, and weight calculations
+  - `styles/` — SCSS styles
+
+## Notes
+
+This README has been updated to reflect the current `package.json` dependency list and the project's source structure.
