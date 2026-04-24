@@ -7,7 +7,8 @@ import GoalForm from "../../components/ui/GoalForm";
 import { calculateProgress, calculateRemaining } from "../../utils/weightUtils";
 import { useInsights } from "../../hooks/useInsights";
 import InsightsCard from "../../components/ui/InsightsCard";
-import Loader from "../../components/ui/Loader";
+import DashboardSkeleton from "../../components/skeletons/DashboardSkeleton";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const { weights, addWeight, updateGoal, goal, loading } = useWeight();
@@ -35,9 +36,7 @@ const Dashboard = () => {
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center py-12 h-64">
-          <Loader size="lg" />
-        </div>
+        <DashboardSkeleton />
       ) : (
         <>
           {/* Add Weight */}
