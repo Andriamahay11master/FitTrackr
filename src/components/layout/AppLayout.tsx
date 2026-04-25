@@ -1,5 +1,7 @@
 import { logout } from "../../services/authService";
+import React from "react";
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
+  const [active, setActive] = React.useState("dashboard");
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
@@ -7,13 +9,25 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
         <h2 className="text-xl font-bold mb-6">FitTrack</h2>
 
         <nav className="space-y-3">
-          <a href="/" className="block text-gray-700 hover:text-black">
+          <a
+            href="/"
+            className={`block text-gray-700 hover:text-black ${active === "dashboard" ? "text-black font-bold" : ""}`}
+            onClick={() => setActive("dashboard")}
+          >
             Dashboard
           </a>
-          <a href="/weight" className="block text-gray-700 hover:text-black">
+          <a
+            href="/weight"
+            className={`block text-gray-700 hover:text-black ${active === "weight" ? "text-black font-bold" : ""}`}
+            onClick={() => setActive("weight")}
+          >
             Weight
           </a>
-          <a href="/meals" className="block text-gray-700 hover:text-black">
+          <a
+            href="/meals"
+            className={`block text-gray-700 hover:text-black ${active === "meals" ? "text-black font-bold" : ""}`}
+            onClick={() => setActive("meals")}
+          >
             Meals
           </a>
         </nav>
