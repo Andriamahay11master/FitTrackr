@@ -5,7 +5,7 @@ import type { User } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 import FullPageLoader from "../ui/FullPageLoader";
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+const useAuthState = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,9 +18,23 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     return () => unsub();
   }, []);
 
+  return { user, loading };
+};
+
+export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user, loading } = useAuthState();
+
   if (loading) return <FullPageLoader />;
 
-  return user ? children : <Navigate to="/login" />;
+  return user ? children : <Navigate to="/login" replace />;
+};
+
+export const PublicRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user, loading } = useAuthState();
+
+  if (loading) return <FullPageLoader />;
+
+  return user ? <Navigate to="/" replace /> : children;
 };
 
 export default ProtectedRoute;

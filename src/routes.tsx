@@ -4,29 +4,43 @@ import AppLayout from "./components/layout/AppLayout";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ForgotPassword from "./pages/auth/ForgotPassword";
-import ProtectedRoutes from "./components/routes/ProtectedRoutes";
+import ProtectedRoute, {
+  PublicRoute,
+} from "./components/routes/ProtectedRoutes";
 
 export const router = createBrowserRouter([
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    ),
   },
   {
     path: "/register",
-    element: <Register />,
+    element: (
+      <PublicRoute>
+        <Register />
+      </PublicRoute>
+    ),
   },
   {
     path: "/forgot-password",
-    element: <ForgotPassword />,
+    element: (
+      <PublicRoute>
+        <ForgotPassword />
+      </PublicRoute>
+    ),
   },
   {
     path: "/",
     element: (
-      <ProtectedRoutes>
+      <ProtectedRoute>
         <AppLayout>
           <Dashboard />
         </AppLayout>
-      </ProtectedRoutes>
+      </ProtectedRoute>
     ),
   },
 ]);
