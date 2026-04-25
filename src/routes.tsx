@@ -7,6 +7,8 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 import ProtectedRoute, {
   PublicRoute,
 } from "./components/routes/ProtectedRoutes";
+import Meals from "./pages/meals/Meals";
+import Weight from "./pages/weight/Weight";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +41,26 @@ export const router = createBrowserRouter([
       <ProtectedRoute>
         <AppLayout>
           <Dashboard />
+        </AppLayout>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/weight",
+    element: (
+      <ProtectedRoute>
+        <AppLayout>
+          <Weight />
+        </AppLayout>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/meals",
+    element: (
+      <ProtectedRoute>
+        <AppLayout>
+          <Meals />
         </AppLayout>
       </ProtectedRoute>
     ),
