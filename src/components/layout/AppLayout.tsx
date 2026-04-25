@@ -1,5 +1,6 @@
 import { logout } from "../../services/authService";
 import React from "react";
+import { Link } from "react-router-dom";
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = React.useState("dashboard");
   return (
@@ -9,27 +10,27 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
         <h2 className="text-xl font-bold mb-6">FitTrack</h2>
 
         <nav className="space-y-3">
-          <a
-            href="/"
+          <Link
+            to="/"
             className={`block text-gray-700 hover:text-black ${active === "dashboard" ? "text-black font-bold" : ""}`}
             onClick={() => setActive("dashboard")}
           >
             Dashboard
-          </a>
-          <a
-            href="/weight"
+          </Link>
+          <Link
+            to="/weight"
             className={`block text-gray-700 hover:text-black ${active === "weight" ? "text-black font-bold" : ""}`}
             onClick={() => setActive("weight")}
           >
             Weight
-          </a>
-          <a
-            href="/meals"
+          </Link>
+          <Link
+            to="/meals"
             className={`block text-gray-700 hover:text-black ${active === "meals" ? "text-black font-bold" : ""}`}
             onClick={() => setActive("meals")}
           >
             Meals
-          </a>
+          </Link>
         </nav>
       </aside>
 
