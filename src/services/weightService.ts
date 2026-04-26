@@ -1,5 +1,12 @@
 import { db, auth } from "./firebase";
-import { collection, addDoc, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  setDoc,
+  getDoc,
+} from "firebase/firestore";
 
 /**
  * Weight Management
@@ -26,7 +33,8 @@ export const getWeights = async () => {
 
   return snapshot.docs
     .map((doc) => doc.data())
-    .filter((w) => w.uid === user.uid);
+    .filter((w) => w.uid === user.uid)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 };
 
 /**
