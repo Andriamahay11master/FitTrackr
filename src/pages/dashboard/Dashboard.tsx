@@ -39,10 +39,6 @@ const Dashboard = () => {
         <DashboardSkeleton />
       ) : (
         <>
-          {/* Add Weight */}
-          <AddWeightForm onAdd={addWeight} />
-          <GoalForm onSetGoal={updateGoal} currentGoal={goal} />
-
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <WeightCard
@@ -58,6 +54,13 @@ const Dashboard = () => {
               title="Remaining"
               value={remaining ? `${remaining.toFixed(1)} kg` : "—"}
             />
+          </div>
+
+          {/* Add Weight */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <InsightsCard insights={insights} />
+            <AddWeightForm onAdd={addWeight} />
+            <GoalForm onSetGoal={updateGoal} currentGoal={goal} />
           </div>
 
           <div className="grid grid-cols-1">
@@ -76,10 +79,6 @@ const Dashboard = () => {
               <span className="text-sm text-gray-500">Last entries</span>
             </div>
             <WeightChart data={weights} />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <InsightsCard insights={insights} />
           </div>
         </>
       )}
