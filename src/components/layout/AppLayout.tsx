@@ -11,7 +11,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md p-4 z-30 transform transition-transform duration-300 lg:translate-x-0 lg:static lg:h-auto lg:shadow-none lg:w-64 lg:p-5 ${
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md p-4 z-30 transform transition-transform duration-300 lg:translate-x-0 lg:w-64 lg:p-5 ${
           showSidebar ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
