@@ -72,10 +72,10 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
 
       <div className="flex flex-col flex-1 lg:ml-64 mt-16 lg:mt-12">
         {/* Top bar */}
-        <div className="fixed inset-x-0 top-0 flex items-center justify-between p-3 bg-white border-b shadow-sm z-10 lg:p-4 lg:inset-x-0 lg:w-auto">
+        <div className="fixed inset-x-0 top-0 flex items-center justify-between p-3 bg-white border-b shadow-sm z-10 lg:p-4 lg:justify-end">
           <button
             type="button"
-            className="text-gray-700 hover:text-black lg:hidden"
+            className="text-2xl text-gray-700 hover:text-black lg:hidden"
             onClick={() => setShowSidebar((prev) => !prev)}
             aria-label="Open navigation menu"
           >
